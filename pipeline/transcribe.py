@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 import pprint
 import time
 import paralleldots
@@ -86,10 +87,12 @@ categories  = { "finance" : [
                 ]
                 }
 
-AUTH_KEY = 'KEY'
-ParallelDotKeys = ['k2AglqzGPYrD7nDmVe4tAQIJmYDhcDRjja0ph1O03mg', 'rhztjeSb7iVjEgpvYkKzKIo31yNrJGZByfHsWvTtfss', 'G5aPEjhRdziRJYanRuUlMqX0cJjddj9ZzvYPqtDU35Q']
-
-# natural_language_understanding = NaturalLanguageUnderstandingV1(version='2018-03-16', username='da73080e-f8e5-465c-b6df-a50caf6ec65a', password='u1u8mF05XvpI')
+AUTH_KEY = os.environ.get('REV_API_KEY', '')
+ParallelDotKeys = [
+    key.strip()
+    for key in os.environ.get('PARALLELDOTS_API_KEYS', '').split(',')
+    if key.strip()
+]
 
 class Transcribe(object):
 	def main(self):

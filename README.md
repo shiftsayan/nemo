@@ -17,3 +17,30 @@ The program takes as input the URL for a YouTube video. It first transcribes the
 * RESTful Flask backend and Angular frontend to serve the video to the user along with annotations
 
 ![Annotated Video](/screenshots/annotated.jpg)
+
+### Local setup
+
+This is an archived HackMIT project built against APIs and SDKs from 2018, so
+some integrations may no longer be available. Install the Python and frontend
+dependencies used by the component you want to run, then configure credentials
+through environment variables rather than committing them.
+
+Copy `.env.example` to `.env`, populate the values you need, and load them into
+your shell before running the project:
+
+```sh
+cp .env.example .env
+set -a
+source .env
+set +a
+```
+
+The supported configuration keys are:
+
+- `IBM_WATSON_USERNAME` and `IBM_WATSON_PASSWORD`
+- `KENSHO_API_KEY`
+- `REV_API_KEY`
+- `PARALLELDOTS_API_KEYS`, as a comma-separated list
+
+Never commit the populated `.env` file. Credentials that previously appeared
+in this repository should be considered compromised and rotated or revoked.

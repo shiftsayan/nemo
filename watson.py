@@ -1,3 +1,5 @@
+import os
+
 from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 import Features, EntitiesOptions, KeywordsOptions, ConceptsOptions, CategoriesOptions, EmotionOptions, MetadataOptions, RelationsOptions, SemanticRolesOptions, SentimentOptions
 import json
@@ -5,7 +7,11 @@ import json
 class Watson(object):
 
     def __init__(self):
-        self.natural_language_understanding = NaturalLanguageUnderstandingV1(version='2018-03-16', username='da73080e-f8e5-465c-b6df-a50caf6ec65a', password='u1u8mF05XvpI')
+        self.natural_language_understanding = NaturalLanguageUnderstandingV1(
+            version='2018-03-16',
+            username=os.environ['IBM_WATSON_USERNAME'],
+            password=os.environ['IBM_WATSON_PASSWORD'],
+        )
 
     def get_keywords(self,sentence):
         response = self. natural_language_understanding.analyze(
